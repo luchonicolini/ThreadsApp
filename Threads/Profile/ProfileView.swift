@@ -17,78 +17,90 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 20) {
-                HStack(alignment: .top) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("Lionel Messi")
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                            Text("LeoMessi_")
-                                .font(.subheadline)
-                        }
-                        Text("Jugador Profecional")
-                            .font(.footnote)
-                        Text("2 Followers")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
-                    Spacer()
-                    Image("Messi")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 40, height: 40)
-                        .clipShape(Circle())
-                }
-                Button {
-                    
-                } label: {
-                    Text("Follow")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(width: 352, height: 32)
-                        .background(.black)
-                        .cornerRadius(8)
-                }
-                VStack {
-                    HStack {
-                        ForEach(ProfileThreadFilter.allCases) { filter in
-                            VStack {
-                                Text(filter.title)
+        NavigationStack {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 20) {
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading, spacing: 12) {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Lionel Messi")
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                Text("LeoMessi_")
                                     .font(.subheadline)
-                                    .fontWeight(selectedFilter == filter ? .semibold : .regular)
-                                if selectedFilter == filter {
-                                    Rectangle()
-                                        .foregroundColor(.black)
-                                        .frame(width: filterBarWidth, height: 1)
-                                        .matchedGeometryEffect(id: "item", in: animation)
-                                    
-                                } else {
-                                    Rectangle()
-                                        .foregroundColor(.clear)
-                                        .frame(width: filterBarWidth, height: 1)
+                            }
+                            Text("Jugador Profecional")
+                                .font(.footnote)
+                            Text("2 Followers")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                        Spacer()
+                        Image("Messi")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 40)
+                            .clipShape(Circle())
+                    }
+                    Button {
+                        
+                    } label: {
+                        Text("Follow")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .frame(width: 352, height: 32)
+                            .background(.black)
+                            .cornerRadius(8)
+                    }
+                    VStack {
+                        HStack {
+                            ForEach(ProfileThreadFilter.allCases) { filter in
+                                VStack {
+                                    Text(filter.title)
+                                        .font(.subheadline)
+                                        .fontWeight(selectedFilter == filter ? .semibold : .regular)
+                                    if selectedFilter == filter {
+                                        Rectangle()
+                                            .foregroundColor(.black)
+                                            .frame(width: filterBarWidth, height: 1)
+                                            .matchedGeometryEffect(id: "item", in: animation)
+                                        
+                                    } else {
+                                        Rectangle()
+                                            .foregroundColor(.clear)
+                                            .frame(width: filterBarWidth, height: 1)
+                                    }
+                                }
+                                .onTapGesture {
+                                    withAnimation(.spring()) {
+                                        selectedFilter = filter
+                                    }
                                 }
                             }
-                            .onTapGesture {
-                                withAnimation(.spring()) {
-                                    selectedFilter = filter
-                                }
+                        }
+                        LazyVStack {
+                            ForEach(0...10, id: \.self) { index in
+                                ThreadCell()
+                                
                             }
                         }
                     }
-                    LazyVStack {
-                        ForEach(0...10, id: \.self) { index in
-                            ThreadCell()
-                            
-                        }
+                    .padding(.vertical,8)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        AuthService.shared.signOut()
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                            .foregroundColor(.primary)
                     }
                 }
-                .padding(.vertical,8)
             }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
 }
 
