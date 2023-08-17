@@ -32,6 +32,9 @@
 		196537032A8DF587005A2BB3 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196537022A8DF587005A2BB3 /* AuthService.swift */; };
 		196537062A8DF9DE005A2BB3 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196537052A8DF9DE005A2BB3 /* ContentViewModel.swift */; };
 		196537082A8DFF82005A2BB3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196537072A8DFF82005A2BB3 /* LoginViewModel.swift */; };
+		19B878252A8EA1B500D17E84 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B878242A8EA1B500D17E84 /* Users.swift */; };
+		19B878282A8EA8E100D17E84 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B878272A8EA8E100D17E84 /* UserService.swift */; };
+		19B8782A2A8EAB7500D17E84 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B878292A8EAB7500D17E84 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		196537022A8DF587005A2BB3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		196537052A8DF9DE005A2BB3 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		196537072A8DFF82005A2BB3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		19B878242A8EA1B500D17E84 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		19B878272A8EA8E100D17E84 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		19B878292A8EAB7500D17E84 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,8 @@
 		1950F8D72A8C36D7004968B0 = {
 			isa = PBXGroup;
 			children = (
+				19B878262A8EA8C800D17E84 /* New Group */,
+				19B878232A8EA1A300D17E84 /* Models */,
 				196537042A8DF9C8005A2BB3 /* Root */,
 				196536FB2A8DF3FB005A2BB3 /* Extras */,
 				1950F9072A8D145C004968B0 /* Profile */,
@@ -176,6 +184,7 @@
 				1950F9082A8D1474004968B0 /* ProfileView.swift */,
 				196536E92A8D3A6A005A2BB3 /* ProfileFilter.swift */,
 				196536EB2A8DA349005A2BB3 /* EditPrifileView.swift */,
+				19B878292A8EAB7500D17E84 /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -210,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				196537022A8DF587005A2BB3 /* AuthService.swift */,
+				19B878272A8EA8E100D17E84 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -220,6 +230,21 @@
 				196537052A8DF9DE005A2BB3 /* ContentViewModel.swift */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		19B878232A8EA1A300D17E84 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19B878242A8EA1B500D17E84 /* Users.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		19B878262A8EA8C800D17E84 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +332,8 @@
 				1950F9002A8D13EA004968B0 /* ExploreView.swift in Sources */,
 				196537062A8DF9DE005A2BB3 /* ContentViewModel.swift in Sources */,
 				1950F9092A8D1474004968B0 /* ProfileView.swift in Sources */,
+				19B878252A8EA1B500D17E84 /* Users.swift in Sources */,
+				19B8782A2A8EAB7500D17E84 /* ProfileViewModel.swift in Sources */,
 				1950F90B2A8D15C2004968B0 /* ThreadCell.swift in Sources */,
 				1950F8F22A8D06E1004968B0 /* RegistrationView.swift in Sources */,
 				196536EC2A8DA349005A2BB3 /* EditPrifileView.swift in Sources */,
@@ -317,6 +344,7 @@
 				196537002A8DF4A3005A2BB3 /* RegistrationViewModel.swift in Sources */,
 				1950F9062A8D1449004968B0 /* ActivityView.swift in Sources */,
 				1950F8F82A8D111A004968B0 /* TabBarView.swift in Sources */,
+				19B878282A8EA8E100D17E84 /* UserService.swift in Sources */,
 				1950F8FB2A8D13AD004968B0 /* FeedView.swift in Sources */,
 				1950F8E42A8C36D7004968B0 /* ThreadsApp.swift in Sources */,
 				196537032A8DF587005A2BB3 /* AuthService.swift in Sources */,
