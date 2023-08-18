@@ -39,7 +39,7 @@ struct TabBarView: View {
                 }
                 .tag(3)
             
-            ProfileView()
+            CurrentUserProfileView()
                 .tabItem {
                     Image(systemName: "person.fill")
                 }

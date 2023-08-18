@@ -9,42 +9,26 @@ import SwiftUI
 
 struct ExploreView: View {
     @State private var searchText = ""
+    @StateObject var viewModel = ExploreViewModel()
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack {
-                    ForEach(0...10,id: \.self) { user in
-                        VStack {
-                            HStack {
-                                Image("Messi")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
-                                VStack(alignment: .leading) {
-                                    Text("lio")
-                                        .fontWeight(.semibold)
-                                    Text("Lionel Messi")
-                                }
-                                .font(.footnote)
-                                Spacer()
-                                Text("Follow")
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                    .frame(width: 100, height: 32)
-                                    .overlay {
-                                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                            .stroke(Color(.systemGray4), lineWidth: 1)
-                                    }
-                                
+                    ForEach(viewModel.users) { user in
+                        NavigationLink(value: user) {
+                            VStack {
+                                UserCell(user: user)
+                                .padding(.horizontal)
+                                Divider()
                             }
-                            .padding(.horizontal)
-                            Divider()
+                            .padding(.vertical,4)
                         }
-                        .padding(.vertical,4)
                     }
                 }
             }
+            .navigationDestination(for: User.self, destination: { user in
+                ProfileView(user: user)
+            })
             .navigationTitle("Search")
             .searchable(text: $searchText, prompt: "Search")
         }

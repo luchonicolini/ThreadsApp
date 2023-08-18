@@ -33,6 +33,7 @@ struct RegistrationView: View {
                     .modifier(ThredsTextFieldModifier())
                 
                 TextField("Username", text: $viewModel.username)
+                    .autocapitalization(.none)
                     .modifier(ThredsTextFieldModifier())
             }
             
