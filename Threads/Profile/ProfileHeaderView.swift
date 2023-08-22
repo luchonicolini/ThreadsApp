@@ -35,11 +35,7 @@ struct ProfileHeaderView: View {
                     .foregroundColor(.gray)
             }
             Spacer()
-            Image("Messi")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 40, height: 40)
-                .clipShape(Circle())
+            CircularProfileImageView(user: nil, size: .medium)
         }
     }
 }

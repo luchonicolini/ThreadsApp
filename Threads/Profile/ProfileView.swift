@@ -15,6 +15,7 @@ struct ProfileView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 ProfileHeaderView(user: user)
+                
       
                 Button {
                     
@@ -27,7 +28,7 @@ struct ProfileView: View {
                         .background(.black)
                         .cornerRadius(8)
                 }
-              UserContentListView()
+              UserContentListView(user: user)
             }
         }
         .toolbar {

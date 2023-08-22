@@ -9,11 +9,13 @@ import SwiftUI
 import PhotosUI
 
 struct EditProfileView: View {
+    let user: User
+    
     @State private var bio = ""
     @State private var link = ""
     @State private var isPrivateProfile = false
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: CurrentUserProfileViewModel
+    @StateObject var viewModel = EditProfileViewModel()
     
     var body: some View {
         NavigationView {
@@ -27,7 +29,7 @@ struct EditProfileView: View {
                             Text("Name")
                                 .font(.headline)
                                 .fontWeight(.semibold)
-                            Text("Lionel Messi")
+                            Text(user.fullname)
                                 .font(.subheadline)
                         }
                         Spacer()
@@ -40,11 +42,7 @@ struct EditProfileView: View {
                                     .frame(width: 40, height: 40)
                                     .clipShape(Circle())
                             } else {
-                                Image("Messi")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
+                                CircularProfileImageView(user: user, size: .small)
                             }
                         }
                         
@@ -92,7 +90,8 @@ struct EditProfileView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        // Acción al presionar Save
+                        Task { try await viewModel.updateUserData() }
+                        dismiss()
                     }
                     .font(.subheadline)
                     .fontWeight(.semibold)
@@ -106,6 +105,6 @@ struct EditProfileView: View {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView()
+        EditProfileView(user: dev.user)
     }
 }

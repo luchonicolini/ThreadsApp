@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CurrentUserProfileView: View {
     @StateObject var viewModel = CurrentUserProfileViewModel()
@@ -36,12 +37,15 @@ struct CurrentUserProfileView: View {
                                     .stroke(Color(.systemGray4), lineWidth: 1)
                             }
                     }
-                    UserContentListView()
+                    if let user = currentUser {
+                        UserContentListView(user: user)
+                    }
                 }
             }
             .sheet(isPresented: $showEditProfile, content: {
-                EditProfileView()
-                    .environmentObject(viewModel)
+                if let user = currentUser {
+                    EditProfileView(user: user)
+                }
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -63,3 +67,6 @@ struct CurrentUserProfileView_Previews: PreviewProvider {
         CurrentUserProfileView()
     }
 }
+
+
+

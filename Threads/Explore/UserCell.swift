@@ -6,18 +6,14 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct UserCell: View {
     let user: User
    
     var body: some View {
         HStack {
-            Image("Messi")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 40, height: 40)
-                .clipShape(Circle())
-         
+            CircularProfileImageView(user: nil, size: .small)
             VStack(alignment: .leading, spacing: 2) {
                 Text(user.username)
                     .fontWeight(.semibold)
@@ -54,4 +50,5 @@ extension PreviewProvider {
 class DeveloperPreview {
     static let shared = DeveloperPreview()
     let user = User(id: NSUUID().uuidString, fullname: "Lionel Messi", email: "Messi@gmail.com", username: "LeoMessi_1", bio: "")
+    let thread = Thread(ownerUid: "123", caption: "Hola Mundo", timestamp: Timestamp(), likes: 0)
 }
